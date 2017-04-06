@@ -1,0 +1,45 @@
+project 'MAO_STUDY.xcodeproj'
+
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MAO_STUDY' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for MAO_STUDY
+pod 'MBProgressHUD', '~> 0.9'
+pod 'FMDB', '~> 2.5'
+pod 'AFNetworking', '~> 3.0'
+pod 'JSBadgeView', '~> 1.3.2'
+pod 'Qiniu', '~> 7.1'
+pod 'MRProgress'
+pod 'TSMessages'
+pod 'pop'
+pod 'RSKImageCropper'
+pod 'SVPullToRefresh'
+pod 'SWTableViewCell', '~> 0.3.7'
+pod 'TTTAttributedLabel'
+pod 'SlackTextViewController'
+pod 'UITableView+FDTemplateLayoutCell', '1.3'
+pod 'APParallaxHeader'
+pod 'UIImage+BlurredFrame', '0.0.4'
+pod 'Masonry'
+pod 'NYXImagesKit', '2.3'
+pod 'SCLAlertView-Objective-C'
+pod 'ReactiveCocoa', '2.3.1'
+pod 'ZXingObjC'
+pod 'DCPathButton', '~> 2.1.3'
+pod 'YYText'
+pod 'CYLTableViewPlaceHolder'
+pod 'RNGridMenu', '~> 0.1.2'
+pod 'ViewDeck', '~> 2.4'
+pod 'AsyncDisplayKit'
+pod 'MJRefresh'
+pod 'HPGrowingTextView'
+pod 'Protobuf'
+pod 'pjsip'
+pod 'SDCycleScrollView','~> 1.64'
+pod 'KLCPopup'
+pod 'MWPhotoBrowser'
+end

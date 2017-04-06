@@ -1,0 +1,36 @@
+//
+//  PrefixHeader.pch
+//  MAO_STUDY
+//
+//  Created by 毛睿 on 17/1/4.
+//  Copyright © 2017年 AKeyChat. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define NAVIBAR_HEIGHT_IPHONE_PORTRAIT 44
+#define STATUSBAR_HEIGHT_IPHONE [[UIApplication sharedApplication] statusBarFrame].size.height
+#define NAVIGATION_BAR_HEIGHT (NAVIBAR_HEIGHT_IPHONE_PORTRAIT + STATUSBAR_HEIGHT_IPHONE)
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define MR_ROW indexPath.row
+#define MR_SECTION indexPath.section
+
+#define MAX_WINDOW_LEVEL 10000000
+
+#import <UIKit/UIKit.h>
+#import <Masonry/Masonry.h>
+#import <FMDB.h>
+#import <MWPhotoBrowser.h>
+
+#import "navigationManager.h"
+#import "MRUser.h"
+#import "MRText.h"
+#import "MRConstants.h"
+#import "MRDBHelper.h"
+
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+#endif /* PrefixHeader_pch */
