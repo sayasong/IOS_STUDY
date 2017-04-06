@@ -16,12 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    /*百度地图SDK初始化*/
     BMKMapManager *mapManager = [[BMKMapManager alloc]init];
-    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
-    BOOL ret = [mapManager start:@"Yb7OXFy0jCPl4clAjS1qt9NZ1XKW06AG"  generalDelegate:nil];
+    BOOL ret = [mapManager start:@"Yb7OXFy0jCPl4clAjS1qt9NZ1XKW06AG" generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    /*高德地图SDK初始化*/
+    [AMapServices sharedServices].apiKey = @"720d9ef172eb23d0a1d4b32271cd702f";
+
     self.mwindow = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     mainViewController *vc = [[mainViewController alloc]init];
     self.mwindow.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];;

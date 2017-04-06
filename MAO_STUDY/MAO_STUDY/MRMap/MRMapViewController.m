@@ -7,7 +7,7 @@
 //
 
 #import "MRMapViewController.h"
-
+#import "MRMapEngine.h"
 @interface MRMapViewController ()
 
 @end
@@ -20,8 +20,11 @@
 }
 
 - (void)initView{
-    BMKMapView* mapView = [[BMKMapView alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:mapView];
+    /*面向协议编程*/
+    MRMapEngine *mapEngine = [[MRMapEngine alloc] init];
+    id<MRMapFactoryProtocol> factory = [mapEngine getFactory];
+    id<MRMapProtocol> mapView = [factory getMapView:self.view.frame];
+    [self.view addSubview:[mapView getView]];
 }
 
 @end
