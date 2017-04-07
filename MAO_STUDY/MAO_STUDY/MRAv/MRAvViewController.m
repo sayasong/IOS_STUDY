@@ -8,12 +8,13 @@
 
 #import "MRAvViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import <AVKit/AVKit.h>
+#import <AVKit/AVKit.h>//视频需要额外支持的框架
 @interface MRAvViewController (){
     NSString *speeakStr;
 }
 @property (nonatomic,strong) AVPlayer *mAVPlayer;
 //@property (nonatomic,strong) AVPlayerViewController *mAVPlayerVC;
+@property (nonatomic,strong) AVAudioRecorder *mRecorder;
 @end
 
 @implementation MRAvViewController
@@ -69,7 +70,28 @@
  录音
  */
 - (void)testThree{
-    
+
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (_avType != AV_TYPE_RECORD) return;
+    NSURL *saveURL = [NSURL URLWithString:@"/Users/maorui/Documents/recorder/rec.caf"];
+    self.mRecorder = [[AVAudioRecorder alloc] initWithURL:saveURL
+                                                 settings:@{AVEncoderAudioQualityKey:[NSNumber numberWithInt:AVAudioQualityLow],//音频质量 比特率
+                                                            AVEncoderBitRateKey:[NSNumber numberWithInt:16],//比特参数
+                                                            AVNumberOfChannelsKey:[NSNumber numberWithFloat:2],//声道数
+                                                            AVSampleRateKey:[NSNumber numberWithFloat:44100.0]}//比特值
+                                                    error:nil];
+    if (self.mRecorder && [self.mRecorder prepareToRecord]) {
+        NSLog(@"开始录音");
+        [self.mRecorder record];
+    }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (_avType != AV_TYPE_RECORD) return;
+    NSLog(@"结束录音");
+    [self.mRecorder stop];
 }
 
 @end
