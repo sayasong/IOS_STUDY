@@ -17,6 +17,7 @@
 #import "MRComplexCoreImageViewController.h"
 #import "MROpenGlesViewController.h"
 #import "MRMapViewController.h"
+#import "MRAvViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -123,6 +124,15 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
     [self addDataWithTotalKey:@"地图"
                        WithVC:[MRMapViewController new]
                  WithVCParams:nil];
+    [self addDataWithTotalKey:@"AV框架_点读机"
+                       WithVC:[MRAvViewController new]
+                 WithVCParams:@{@"avType":[NSNumber numberWithInteger:AV_TYPE_SPEAK]}];
+    [self addDataWithTotalKey:@"AV框架_视频播放器"
+                       WithVC:[MRAvViewController new]
+                 WithVCParams:@{@"avType":[NSNumber numberWithInteger:AV_TYPE_VIDEO]}];
+    [self addDataWithTotalKey:@"AV框架_录音"
+                       WithVC:[MRAvViewController new]
+                 WithVCParams:@{@"avType":[NSNumber numberWithInteger:AV_TYPE_RECORD]}];
 }
 
 - (void)test{
@@ -181,10 +191,10 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
                WithVCParams:(NSDictionary *)params{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     if (vc) {
+        if (params && params.count>0) {
+            [vc setValuesForKeysWithDictionary:params];
+        }
         [dic setObject:vc forKey:@"VC"];
-    }
-    if (params && params.count>0) {
-        [dic setObject:params forKey:@"params"];
     }
     [self.tableViewData setObject:dic forKey:totalKey];
 }
