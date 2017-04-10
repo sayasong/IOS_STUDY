@@ -18,6 +18,8 @@
 #import "MROpenGlesViewController.h"
 #import "MRMapViewController.h"
 #import "MRAvViewController.h"
+#import "TimerViewController.h"
+#import "GCDTimerViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -133,6 +135,12 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
     [self addDataWithTotalKey:@"AV框架_录音"
                        WithVC:[MRAvViewController new]
                  WithVCParams:@{@"avType":[NSNumber numberWithInteger:AV_TYPE_RECORD]}];
+    [self addDataWithTotalKey:@"runloop_timer"
+                       WithVC:[TimerViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"runloop_GCD_timer"
+                       WithVC:[GCDTimerViewController new]
+                 WithVCParams:nil];
 }
 
 - (void)test{
