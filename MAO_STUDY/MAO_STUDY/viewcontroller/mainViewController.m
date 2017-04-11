@@ -21,6 +21,7 @@
 #import "TimerViewController.h"
 #import "GCDTimerViewController.h"
 #import "RunLoopViewController.h"
+#import "CollecitonTestViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -144,6 +145,9 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
                  WithVCParams:nil];
     [self addDataWithTotalKey:@"runloop_Example"
                        WithVC:[RunLoopViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"collectionview以及自定义写法的错位瀑布流"
+                       WithVC:[CollecitonTestViewController new]
                  WithVCParams:nil];
 }
 
