@@ -20,6 +20,7 @@
 #import "MRAvViewController.h"
 #import "TimerViewController.h"
 #import "GCDTimerViewController.h"
+#import "RunLoopViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -140,6 +141,9 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
                  WithVCParams:nil];
     [self addDataWithTotalKey:@"runloop_GCD_timer"
                        WithVC:[GCDTimerViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"runloop_Example"
+                       WithVC:[RunLoopViewController new]
                  WithVCParams:nil];
 }
 
