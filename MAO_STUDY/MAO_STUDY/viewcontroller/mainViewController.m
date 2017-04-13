@@ -22,6 +22,7 @@
 #import "GCDTimerViewController.h"
 #import "RunLoopViewController.h"
 #import "CollecitonTestViewController.h"
+#import "RuntimeCodingViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -113,16 +114,16 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
     [self addDataWithTotalKey:@"MWPhotoBrowser"
                        WithVC:[MWPhotoBrowserTestViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"socket编程"
+    [self addDataWithTotalKey:@"Socket编程"
                        WithVC:[socketTestViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"coreImage"
+    [self addDataWithTotalKey:@"CoreImage"
                        WithVC:[MRCoreImageVC new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"coreImage2"
+    [self addDataWithTotalKey:@"CoreImage2"
                        WithVC:[MRComplexCoreImageViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"coreImage3"
+    [self addDataWithTotalKey:@"CoreImage3"
                        WithVC:[MROpenGlesViewController new]
                  WithVCParams:nil];
     [self addDataWithTotalKey:@"地图"
@@ -137,17 +138,20 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
     [self addDataWithTotalKey:@"AV框架_录音"
                        WithVC:[MRAvViewController new]
                  WithVCParams:@{@"avType":[NSNumber numberWithInteger:AV_TYPE_RECORD]}];
-    [self addDataWithTotalKey:@"runloop_timer"
+    [self addDataWithTotalKey:@"Runloop_timer"
                        WithVC:[TimerViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"runloop_GCD_timer"
+    [self addDataWithTotalKey:@"Runloop_GCD_timer"
                        WithVC:[GCDTimerViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"runloop_Example"
+    [self addDataWithTotalKey:@"Runloop_Example"
                        WithVC:[RunLoopViewController new]
                  WithVCParams:nil];
-    [self addDataWithTotalKey:@"collectionview以及自定义写法的错位瀑布流"
+    [self addDataWithTotalKey:@"Collectionview以及自定义写法的错位瀑布流"
                        WithVC:[CollecitonTestViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"Runtime_归档解档_方法交换"
+                       WithVC:[RuntimeCodingViewController new]
                  WithVCParams:nil];
 }
 
