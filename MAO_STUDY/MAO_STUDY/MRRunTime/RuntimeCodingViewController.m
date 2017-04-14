@@ -35,7 +35,14 @@
     obj = objc_msgSend(obj, sel_registerName("init"));
     objc_msgSend(obj,sel_registerName("LOL"));
     objc_msgSend(obj,sel_registerName("LOL:"),@"hehe");
-    
+    //根文件夹下还有一个project名为testForClang 用来查看编译后的C代码是否与我们所想的一致
+    //编译指令:clang -rewrite-objc main.m 编译得到一个cpp 最下面就是我们要看的
+    /*
+     int main(int argc, const char * argv[]) {
+     Person *person = ((Person *(*)(id, SEL))(void *)objc_msgSend)((id)((Person *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("Person"), sel_registerName("alloc")), sel_registerName("init"));
+     return 0;
+     }
+     */
 }
 
 - (void)testForFunctionExchange{
