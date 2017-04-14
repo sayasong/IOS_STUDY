@@ -11,6 +11,7 @@
 
 @implementation NSURL (MR)
 
+//文件被加载进来的时候调用 会比mian还要早
 + (void)load{
     Method URLWithStr = class_getClassMethod([NSURL class], @selector(URLWithString:));
     Method MRURLWithStr = class_getClassMethod([NSURL class], @selector(MR_URLWithString:));

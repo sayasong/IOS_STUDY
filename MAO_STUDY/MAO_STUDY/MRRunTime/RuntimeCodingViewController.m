@@ -23,6 +23,8 @@
 }
 
 - (void)testForMessageSend{
+    //objc/message 包含 objc/runtime
+    
     //build settings 中 enable strict checking of obj_msgSend Calls 要设置为 NO 因为在Xcode5.0之后 苹果不建议使用底层代码 建议使用runtime
     
     //MRRuntimeObj *obj = [[MRRuntimeObj alloc] init];;
@@ -35,6 +37,7 @@
     obj = objc_msgSend(obj, sel_registerName("init"));
     objc_msgSend(obj,sel_registerName("LOL"));
     objc_msgSend(obj,sel_registerName("LOL:"),@"hehe");
+    objc_msgSend(obj,sel_registerName("LOL_ERROR"));
     //根文件夹下还有一个project名为testForClang 用来查看编译后的C代码是否与我们所想的一致
     //编译指令:clang -rewrite-objc main.m 编译得到一个cpp 最下面就是我们要看的
     /*
