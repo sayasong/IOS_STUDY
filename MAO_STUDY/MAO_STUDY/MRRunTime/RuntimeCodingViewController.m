@@ -10,18 +10,53 @@
 #import "MRCodingObj.h"
 //#import "MRRuntimeObj.h"
 #import <objc/message.h>
-@interface RuntimeCodingViewController ()
 
+//用来被观察的类
+@interface MRChild : NSObject
+@property (nonatomic ,strong) NSString *age;
+@end
+@implementation MRChild
+@end
+//观察类
+@interface MRObserver : NSObject
+
+@end
+
+@implementation MRObserver
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"监听到了,keyPath:%@,object:%@,change:%@,context:%@",keyPath,object,change,context);
+}
+@end
+
+@interface RuntimeCodingViewController ()
+@property (nonatomic,strong) MRChild *child;
+@property (nonatomic,strong) MRObserver *observer;
 @end
 
 @implementation RuntimeCodingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self testForOb];
     [self testForMessageSend];
     [self testForFunctionExchange];
 }
 
+- (void)testForOb{
+    self.child = [MRChild new];
+    self.observer = [MRObserver new];
+    [self.child addObserver:self.observer forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    self.child.age = @"1";
+    //isa	Class	NSKVONotifying_MRChild	0x0000600000300090
+    //isa	Class	MRObserver	0x000000010cfe48e0
+    //被观察者已经被重建了 不再是原来的那个类了 继承的新类重写了set方法 并在里面发送通知
+}
+
+//消息发送机制初探 代码完全C语言化
 - (void)testForMessageSend{
     //objc/message 包含 objc/runtime
     
@@ -48,6 +83,7 @@
      */
 }
 
+//runtime动态交换方法
 - (void)testForFunctionExchange{
     //url中掺入中文使得到的nsurl为空
     NSURL *url = [NSURL URLWithString:@"www.baidu.com/中文"];
@@ -55,6 +91,7 @@
     NSLog(@"生成的网络请求%@",request);
 }
 
+//批量获取方法的所有属性
 - (IBAction)codingBtnClicked:(UIButton *)sender {
     //创建需要归档的类
     MRCodingObj *obj = [[MRCodingObj alloc] init];
