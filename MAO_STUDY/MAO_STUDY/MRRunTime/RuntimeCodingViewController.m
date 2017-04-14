@@ -8,6 +8,8 @@
 
 #import "RuntimeCodingViewController.h"
 #import "MRCodingObj.h"
+//#import "MRRuntimeObj.h"
+#import <objc/message.h>
 @interface RuntimeCodingViewController ()
 
 @end
@@ -16,7 +18,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self testForMessageSend];
     [self testForFunctionExchange];
+}
+
+- (void)testForMessageSend{
+    //build settings 中 enable strict checking of obj_msgSend Calls 要设置为 NO 因为在Xcode5.0之后 苹果不建议使用底层代码 建议使用runtime
+    
+    //MRRuntimeObj *obj = [[MRRuntimeObj alloc] init];;
+    //[obj performSelector:@selector(LOL)];
+    
+    //NSClassFromString(@"MRRuntimeObj");
+    
+    //MRRuntimeObj *obj = objc_msgSend([MRRuntimeObj class], @selector(alloc));
+    id obj = objc_msgSend(objc_getClass("MRRuntimeObj"), sel_registerName("alloc"));
+    obj = objc_msgSend(obj, sel_registerName("init"));
+    objc_msgSend(obj,sel_registerName("LOL"));
+    objc_msgSend(obj,sel_registerName("LOL:"),@"hehe");
+    
 }
 
 - (void)testForFunctionExchange{
