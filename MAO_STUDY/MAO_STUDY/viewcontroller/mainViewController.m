@@ -23,6 +23,7 @@
 #import "RunLoopViewController.h"
 #import "CollecitonTestViewController.h"
 #import "RuntimeCodingViewController.h"
+#import "MRQRCodeViewController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -152,6 +153,9 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
                  WithVCParams:nil];
     [self addDataWithTotalKey:@"Runtime_归档解档_方法交换"
                        WithVC:[RuntimeCodingViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"二维码"
+                       WithVC:[MRQRCodeViewController new]
                  WithVCParams:nil];
 }
 
