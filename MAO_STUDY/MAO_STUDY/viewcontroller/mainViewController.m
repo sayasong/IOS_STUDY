@@ -24,6 +24,7 @@
 #import "CollecitonTestViewController.h"
 #import "RuntimeCodingViewController.h"
 #import "MRQRCodeViewController.h"
+#import "mainTabBarController.h"
 typedef void (^TEST_BLOCK_1)(int,NSString *);
 typedef void (^TEST_BLOCK_2)(int i,NSString *str);
 @interface mainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -156,6 +157,9 @@ typedef void (^TEST_BLOCK_2)(int i,NSString *str);
                  WithVCParams:nil];
     [self addDataWithTotalKey:@"二维码"
                        WithVC:[MRQRCodeViewController new]
+                 WithVCParams:nil];
+    [self addDataWithTotalKey:@"自定义tabbar"
+                       WithVC:[mainTabBarController new]
                  WithVCParams:nil];
 }
 
